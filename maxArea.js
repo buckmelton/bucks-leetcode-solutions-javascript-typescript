@@ -22,8 +22,8 @@ Output: 1
  
 Constraints:
 n == height.length
-2 <= n <= 105
-0 <= height[i] <= 104
+2 <= n <= 10**5
+0 <= height[i] <= 10**4
 
 MY NOTES:
 Method 1 (Naive brute force implementation):
