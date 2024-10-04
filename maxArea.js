@@ -31,6 +31,10 @@ Create an n x n matrix M where each element of the matrix M[i][j] is the area fo
 Only half the matrix needs to be filled out, since it's symmetrical.  That is, compute only the values where j > i
 Return the maximum value from this matrix.
 
+Method 2:
+This is specifically labelled as a two-pointer problem.  So obviously there must be some way to take advantage of two pointers
+moving along the n vertical lines.
+
 */
 
 var maxArea = function(height) {
