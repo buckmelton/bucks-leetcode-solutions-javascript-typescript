@@ -34,6 +34,14 @@ Return the maximum value from this matrix.
 Method 2:
 This is specifically labelled as a two-pointer problem.  So obviously there must be some way to take advantage of two pointers
 moving along the n vertical lines.
+Initialize maxArea to 0
+Initialize pointer 1 p1 to 0, pointer 2 p2 to 1.
+If area between p1 and p2 > maxArea, set maxArea to this area
+If p2 is taller than p1, increment p1 and p2
+If p2 is shorter or equal to p1, increment p2
+
+Question: Do we have 2 pointers that never pass each other?  Or do we have a short pointer and a tall pointer that may leapfrog each other?
+
 
 */
 
