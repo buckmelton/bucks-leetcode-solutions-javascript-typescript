@@ -25,6 +25,12 @@ n == height.length
 2 <= n <= 105
 0 <= height[i] <= 104
 
+MY NOTES:
+Method 1 (Naive brute force implementation):
+Create an n x n matrix M where each element of the matrix M[i][j] is the area for line i and line j: (j-i)*min(height[i],height[j]).
+Only half the matrix needs to be filled out, since it's symmetrical.  That is, compute only the values where j > i
+Return the maximum value from this matrix.
+
 */
 
 var maxArea = function(height) {
