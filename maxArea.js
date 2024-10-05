@@ -50,5 +50,14 @@ Question: Do we have 2 pointers that never pass each other?  Or do we have a sho
 */
 
 var maxArea = function(height) {
-    
+  let maxArea = 0;
+  let p1 = p2 = 0;
+  let curArea;
+  console.log(`p1: ${p1}, p2: ${p2}, height[p1]: ${height[p1]}, height[p2]: ${height[p2]}`);
+  while (p2 < height.length+1) {
+    curArea = (p2-p1) * Math.min(p1,p2);
+    if (curArea > maxArea) {
+      maxArea = curArea;
+    } elif
+  }
 };
