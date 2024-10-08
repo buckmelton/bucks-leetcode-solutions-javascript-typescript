@@ -49,6 +49,8 @@ n == height.length
 
 */
 var maxArea = function(height) {
+  // Time: O(n)
+  // Space: O(1)
   let maxArea = 0;
   let p1 = 0;
   let p2 = height.length - 1;
