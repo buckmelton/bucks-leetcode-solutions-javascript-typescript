@@ -31,4 +31,31 @@ Constraints:
 1 <= nums[i] <= 10**9
 1 <= k <= 10**9
 
+MY NOTES & OBSERVATIONS:
+- Once a number is removed, it is no longer available for creating a sum.
+- There is no prohibition against sorting, and sorting will not affect
+  the existence of pairs, since ordering has no effect on the presence
+  of pairs.
+- We can sort the array and and start one pointer at the left (lowest) end,
+  and one pointer at the right (highest) end.  If the sum of the left
+  pointer and right pointer exceeds the target sum k, we can move the right
+  pointer one to the left, since we know there can never be a smaller
+  sum involving this rightmost number, and so the target sum will never
+  involve this rightmost number.
+- If the sum of the left and right is less than the target sum k, we can
+  move the left pointer one to the right, since we know there will never be
+  a lesser sum and so the target sum will never involve the leftmost
+  number.
+- If the sum of the left and right equals the target k, move both left and
+  right pointer inward, increment the number of operations, and delete the
+  leftmost and rightmost numbers.
+- In fact, there's no prohibition on deleting non-involved numbers from the array,
+  so we don't really need pointers at all, we can just delete the numbers at
+  the ends of the array instead of "moving pointers"; the pointers are always
+  implicitly the beginning and end of the array.
+
 */
+
+function maxOperations(nums: number[], k: number): number {
+
+};
