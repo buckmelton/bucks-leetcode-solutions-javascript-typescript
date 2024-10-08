@@ -25,39 +25,48 @@ n == height.length
 2 <= n <= 10**5
 0 <= height[i] <= 10**4
 
-MY NOTES:
-Method 1 (Naive brute force implementation):
-Create an n x n matrix M where each element of the matrix M[i][j] is the area for line i and line j: (j-i)*min(height[i],height[j]).
-Only half the matrix needs to be filled out, since it's symmetrical.  That is, compute only the values where j > i
-Return the maximum value from this matrix.
+/*
+ MY NOTES:
+  Method 1 (Naive brute force implementation):
+  Create an n x n matrix M where each element of the matrix M[i][j] is the area for line i and line j: (j-i)*min(height[i],height[j]).
+  Only half the matrix needs to be filled out, since it's symmetrical.  That is, compute only the values where j > i
+  Return the maximum value from this matrix.
 
-Method 2:
-This is specifically labelled as a two-pointer problem.  So obviously there must be some way to take advantage of two pointers
-moving along the n vertical lines.
-Initialize maxArea to 0
-Initialize pointer 1 p1 to 0, pointer 2 p2 to 1.
-While p2 not past end
-  If area between p1 and p2 > maxArea, set maxArea to this area
-  If p2 is taller than p1, increment p1 and p2
-  Else if p2 is shorter or equal to p1, increment p2
-end loop
-If area between p1 and p2 > maxArea, set maxArea to this area
-Return maxArea
+  However, this implementations is O(n**2), not good.
 
-Question: Do we have 2 pointers that never pass each other?  Or do we have a short pointer and a tall pointer that may leapfrog each other?
-
+  Method 2:
+  This is specifically labelled as a two-pointer problem.  So obviously there must be some way to take advantage of two pointers
+  
+  Initialize maxArea to zero
+  Initialize p1 to left end, p2 to right end
+  While p1 and p2 haven't met in the middle
+    Compute area between p1 and p2
+    If new area > current maxArea, update maxArea to new area
+    Since we begin at the widest point, the only way the area might potentially be larger is if the height
+      of the limiting (shorter) height gets higher, so move in the shorter of the two heights.
+  End loop
+  Return 
 
 */
-
 var maxArea = function(height) {
   let maxArea = 0;
-  let p1 = p2 = 0;
+  let p1 = 0;
+  let p2 = 1;
   let curArea;
   console.log(`p1: ${p1}, p2: ${p2}, height[p1]: ${height[p1]}, height[p2]: ${height[p2]}`);
   while (p2 < height.length+1) {
     curArea = (p2-p1) * Math.min(p1,p2);
     if (curArea > maxArea) {
       maxArea = curArea;
-    } elif
+    }
+    if (height[p2] > height[p1]) {
+      p1++;
+    }
+    p2++;
   }
+  curArea = (p2-p1) * Math.min(p1,p2);
+  if (curArea > maxArea) {
+    maxArea = curArea;
+  }
+  return maxArea;
 };
