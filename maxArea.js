@@ -55,9 +55,7 @@ var maxArea = function(height) {
   let curArea;
   while (p1 < p2) {
     curArea = (p2 - p1) * Math.min(height[p1], height[p2]);
-    if (curArea > maxArea) {
-      maxArea = curArea;
-    }
+    maxArea = Math.max(curArea, maxArea);
     if (height[p1] < height[p2]) {
       p1++;
     } else {
