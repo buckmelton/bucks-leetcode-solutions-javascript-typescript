@@ -54,6 +54,21 @@ MY NOTES & OBSERVATIONS:
   the ends of the array instead of "moving pointers"; the pointers are always
   implicitly the beginning and end of the array.
 
+PSEUDOCODE:
+- Init numOperations to 0
+- Sort array
+- While array length >= 2
+-   If first element + last element = target
+-     Increment numOperations
+-     Delete first element
+-     Delete last element
+-   Else
+-     If first element + last element < target
+-       Delete first element
+-     Else // first element + last element > target
+-       Delete last element
+- Return numOperations
+
 */
 
 function maxOperations(nums: number[], k: number): number {
