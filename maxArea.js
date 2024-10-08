@@ -34,6 +34,18 @@ n == height.length
 
   However, this implementations is O(n**2), not good.
 
+  Method 2:
+  This is specifically labelled as a two-pointer problem.  So obviously there must be some way to take advantage of two pointers
+  
+  Initialize maxArea to zero
+  Initialize p1 to left end, p2 to right end
+  While p1 and p2 haven't met in the middle
+    Compute area between p1 and p2
+    If new area > current maxArea, update maxArea to new area
+    Since we begin at the widest point, the only way the area might potentially be larger is if the height
+      of the limiting (shorter) height gets higher, so move in the shorter of the two heights.
+  End loop
+  Return 
 
 */
 var maxArea = function(height) {
