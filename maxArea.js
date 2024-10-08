@@ -49,5 +49,20 @@ n == height.length
 
 */
 var maxArea = function(height) {
-
+  let maxArea = 0;
+  let p1 = 0;
+  let p2 = height.length - 1;
+  let curArea;
+  while (p1 < p2) {
+    curArea = (p2 - p1) * ((height[p1] < height[p2]) ? height[p1] : height[p2]);
+    if (curArea > maxArea) {
+      maxArea = curArea;
+    }
+    if (height[p1] < height[p2]) {
+      p1++;
+    } else {
+      p2--;
+    }
+  }
+  return maxArea;
 };
