@@ -72,5 +72,21 @@ PSEUDOCODE:
 */
 
 function maxOperations(nums: number[], k: number): number {
-
+  let maxOperations: number = 0;
+  let sum: number;
+  nums.sort((a,b) => a - b);
+  while (nums.length >= 2) {
+    sum = nums[0] + nums[nums.length-1];
+    if (sum == k) {
+      maxOperations++;
+      nums = nums.slice(1,nums.length-1);
+    } else {
+      if (sum < k) {
+        nums = nums.slice(1);
+      } else { // sum > k
+        nums = nums.slice(0, nums.length-2);
+      }
+    }
+  }
+  return maxOperations;
 };
