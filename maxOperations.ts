@@ -69,6 +69,46 @@ PSEUDOCODE:
 -       Delete last element
 - Return numOperations
 
+PSEUDOCODE:
+Approach 1:
+- Init numOperations to 0
+- Sort array
+- While array length >= 2
+-   If first element + last element = target
+-     Increment numOperations
+-     Delete first element
+-     Delete last element
+-   Else
+-     If first element + last element < target
+-       Delete first element
+-     Else // first element + last element > target
+-       Delete last element
+- Return numOperations
+
+I'm getting timeout on the above approach, either the slices or the sort must be the issue.
+I can get rid of the slice by using pointers, and also by advancing/retreating the pointer
+past all the values equal to the one I'm moving past.
+
+Approach 2:
+- Sort array
+- Init left pointer to beginning of array
+- Init right pointer to end of array
+- Init maxOperations to 0
+- while array length is at least 2
+-   sum = number pointed to by left pointer + number pointed to by right pointer
+-   if sum > target
+-     while right pointer is same value
+-       move right pointer left
+-   else
+-     if sum < target
+-       while left pointer is same value
+-         move left pointer right
+-     else
+-       increment maxOperations
+-       remove left value (left pointer can stay same)
+-       remove right value
+-       move right pointer left
+- return maxOperations
 */
 
 function maxOperations(nums: number[], k: number): number {
