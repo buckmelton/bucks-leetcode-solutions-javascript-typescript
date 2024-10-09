@@ -112,19 +112,33 @@ Approach 2:
 */
 
 function maxOperations(nums: number[], k: number): number {
+  nums.sort((a,b) => a - b);
+  let left: number = 0;
+  let leftVal: number = nums[left];
+  let right: number = nums.length-1;
+  let rightVal: number = nums[right];
   let maxOperations: number = 0;
   let sum: number;
-  nums.sort((a,b) => a - b);
-  while (nums.length >= 2) {
-    sum = nums[0] + nums[nums.length-1];
-    if (sum == k) {
-      maxOperations++;
-      nums = nums.slice(1,nums.length-1);
+  while (left < right) {
+    sum = leftVal + rightVal;
+    if (sum > k) {
+      while (nums[right] == rightVal) {
+        right--;
+      }
+      rightVal = nums[right];
     } else {
       if (sum < k) {
-        nums = nums.slice(1);
-      } else { // sum > k
-        nums = nums.slice(0, nums.length-2);
+        while (nums[left] == leftVal) {
+          left++;
+        }
+        leftVal = nums[left];
+      } else {
+        maxOperations++;
+        nums.splice(left,1);
+        leftVal = nums[left];
+        nums.splice(right,1);
+        right--;
+        rightVal = nums[right];
       }
     }
   }
