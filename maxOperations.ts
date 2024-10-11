@@ -114,31 +114,30 @@ Approach 2:
 function maxOperations(nums: number[], k: number): number {
   nums.sort((a,b) => a - b);
   let left: number = 0;
-  let leftVal: number = nums[left];
   let right: number = nums.length-1;
-  let rightVal: number = nums[right];
   let maxOperations: number = 0;
   let sum: number;
-  while (left < right) {
-    sum = leftVal + rightVal;
+  // Shouldn't need nums.length > 0 clause here.  Runs correctly without it on typescriptlang.org sandbox.
+  // But for some reason, leetcode goes into an infinite loop if the entire nums array is consumed by
+  // summing pairs.
+  while ((left < right) && (nums.length > 0)) {
+    sum = nums[left] + nums[right];
     if (sum > k) {
-      while (nums[right] == rightVal) {
+      while (nums[right-1] == nums[right]) {
         right--;
       }
-      rightVal = nums[right];
+      right--;
     } else {
       if (sum < k) {
-        while (nums[left] == leftVal) {
+        while (nums[left+1] == nums[left]) {
           left++;
         }
-        leftVal = nums[left];
+        left++;
       } else {
         maxOperations++;
-        nums.splice(left,1);
-        leftVal = nums[left];
         nums.splice(right,1);
-        right--;
-        rightVal = nums[right];
+        right -= 2;
+        nums.splice(left,1);
       }
     }
   }
