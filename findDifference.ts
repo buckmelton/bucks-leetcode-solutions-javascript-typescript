@@ -40,7 +40,22 @@
 // For each int in set A, identify whether it's a member of set B and if so,
 //   store in answer[0]
 // Vice versa or set B, set A, answer[1]
-//
-function findDifference(nums1: number[], nums2: number[]): number[][] {
 
+// This seems to be not only "brute force" (at least in my head it is),
+// but also the correct answer.
+function findDifference(nums1: number[], nums2: number[]): number[][] {
+  const set1: Set<number> = new Set<number>(nums1);
+  const set2: Set<number> = new Set<number>(nums2);
+  let answer: number[][] = [ [], [] ];
+  for (let int1 of set1) {
+    if (!set2.has(int1)) {
+      answer[0].push(int1);
+    }
+  }
+  for (let int2 of set2) {
+    if (!set1.has(int2)) {
+      answer[1].push(int2)
+    }
+  }
+  return answer;
 };
