@@ -31,3 +31,16 @@
 
 // 1 <= nums1.length, nums2.length <= 1000
 // -1000 <= nums1[i], nums2[i] <= 1000
+
+// MY OBSERVATIONS:
+// The problem is specified as a hashmap or set problem.
+// 
+// BRUTE FORCE:
+// Create set A and set B from nums1 and nums2
+// For each int in set A, identify whether it's a member of set B and if so,
+//   store in answer[0]
+// Vice versa or set B, set A, answer[1]
+//
+function findDifference(nums1: number[], nums2: number[]): number[][] {
+
+};
