@@ -41,8 +41,15 @@
 //   store in answer[0]
 // Vice versa or set B, set A, answer[1]
 
+// This solution is O(n).
+
 // This seems to be not only "brute force" (at least in my head it is),
-// but also the correct answer.
+// but also the correct answer. 
+
+// Evidently "brute force" technically involves nested loops, for each int
+// of one array looping through all the ints of the other array, recording
+// ones that don't exist in the other array.
+// This second naive solution is O(n**2).
 function findDifference(nums1: number[], nums2: number[]): number[][] {
   const set1: Set<number> = new Set<number>(nums1);
   const set2: Set<number> = new Set<number>(nums2);
