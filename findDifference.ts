@@ -42,6 +42,7 @@
 // Vice versa or set B, set A, answer[1]
 
 // This solution is O(n).
+// My TypeScript implementation beats 83% of other users' answers.
 
 // This seems to be not only "brute force" (at least in my head it is),
 // but also the correct answer. 
