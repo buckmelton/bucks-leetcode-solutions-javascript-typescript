@@ -19,4 +19,19 @@ Constraints:
 1 <= nums.length <= 10
 -10 <= nums[i] <= 10
 All the numbers of nums are unique.
+
+PSEUDOCODE:
+- Find all subsets
+- Since all numbers are unique, we dont have to worry about testing whether there are duplicates,
+  assuming we work through nums[] in succession
+- Brute force:
+  - Create an array to hold all the subsets, initialize to empty
+  - Add empty set to array of subsets
+  - Go through each number in input array
+      - For each subset in subsets array
+          - Create new subset adding the current number
+          - And add that new subset to the array of subsets
+
+TC: O(2**n)
+SC: O(1) (for processing), O(2**n) (for return value)
 */
