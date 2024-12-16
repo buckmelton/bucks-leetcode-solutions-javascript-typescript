@@ -35,3 +35,15 @@ PSEUDOCODE:
 TC: O(2**n)
 SC: O(1) (for processing), O(2**n) (for return value)
 */
+
+var subsets = function(nums) {
+  let powerSet = [[]];
+  for (let i = 0; i < nums.length; i++) {
+    let powerSetLength = powerSet.length;
+    for (let j = 0; j < powerSetLength; j++) {
+      let newSubset = [...powerSet[j], nums[i]];
+      powerSet = [...powerSet, newSubset];
+    }
+  }
+  return powerSet;
+};
