@@ -52,3 +52,17 @@ character will never be a '-'), but this probably isn't worth it.
 - If we've exited the loop without already returning, then
   the number is a palindrome.
 */
+
+function isPalindrome(x: number): boolean {
+  let xStr: string = x.toString();
+  let leftPtr: number = 0;
+  let rightPtr: number = xStr.length-1;
+  while (rightPtr > leftPtr) {
+    if (xStr[leftPtr] !== xStr[rightPtr]) {
+      return false;
+    }
+    leftPtr++;
+    rightPtr--;
+  }
+  return true;
+};
