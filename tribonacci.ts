@@ -24,3 +24,19 @@ Constraints:
 0 <= n <= 37
 The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
 */
+
+/*
+NOTES:
+Fibonacci and its derivatives are a well-known problem recursive problem where Dynamic Programming (DP)
+is useful.
+
+PSEUDOCODE:
+- Declare wrapper function with initial parameter 'n'
+  - initialized empty cache for memoization
+  - declare helper function
+    - if solution is in cache, return it
+    - if base case(s) T(0) = 0, T(1) = 1, T(2) = 1, return the base case answer
+    - compute answer = helper(n-1) + helper(n-2) + helper(n-3)
+    - cache answer
+    - return answer
+*/
