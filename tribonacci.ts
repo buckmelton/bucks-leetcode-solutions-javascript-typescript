@@ -40,3 +40,27 @@ PSEUDOCODE:
     - cache answer
     - return answer
 */
+
+function tribonacci(n: number): number {
+
+  let memoCache: number[] = [];
+  console.log(memoCache);
+
+  const tribHelper = function (t) {
+    if (memoCache[t]) {
+      return memoCache[t];
+    }
+    if (t === 0) {
+      return 0;
+    } else {
+      if ((t === 1) || (t === 2)) {
+        return 1;
+      } else {
+        memoCache[t] = tribHelper(t-1) + tribHelper(t-2) + tribHelper(t-3);
+        return memoCache[t];
+      }
+    }
+  }
+
+  return tribHelper(n);;
+};
