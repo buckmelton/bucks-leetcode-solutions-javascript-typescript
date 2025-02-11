@@ -31,3 +31,26 @@ Each test case will call ping with strictly increasing values of t.
 At most 10**4 calls will be made to ping.
 */
 
+class RecentCounter {
+    pingQ:number[];
+
+    constructor() {
+        this.pingQ = [];
+    }
+
+    ping(t: number): number {
+        this.pingQ.push(t);
+        let i:number = 0;
+        while ((i<this.pingQ.length) && (this.pingQ[i] < t - 3000)) {
+            i++;
+        }
+        this.pingQ.splice(0,i);
+        return this.pingQ.length;
+    }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * var obj = new RecentCounter()
+ * var param_1 = obj.ping(t)
+ */
