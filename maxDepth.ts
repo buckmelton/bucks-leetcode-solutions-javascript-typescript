@@ -33,6 +33,13 @@ The number of nodes in the tree is in the range [0, 10**4].
  * }
  */
 
+/*
+ BUCK'S NOTES:
+ The Max Depth is found by doing a recursive DFS (Depth First Search) on the Binary Tree.
+ Unfortunately, every node must be visited.
+ A scope variable will be needed to track the maximum depth encountered so far.
+*/
+
 function maxDepth(root: TreeNode | null): number {
     
 };
