@@ -56,3 +56,13 @@ function searchBST(root: TreeNode | null, val: number): TreeNode | null {
   return searchBST(root.right, val);
 
 };
+
+/*
+SPACE COMPLEXITY:
+	The space needed for the recursion stack:
+	O(log n): Average case, assuming fairly balanced tree
+	O(n): Worst case, if tree is opposite of balanced - i.e. a straight-line tree
+TIME COMPLEXITY:
+	O(log n): Average case, assuming fairly balanced tree
+	O(n): Worst case, if tree is opposite of balanced - i.e. a straight-line tree
+*/
