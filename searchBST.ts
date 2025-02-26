@@ -38,5 +38,21 @@ root is a binary search tree.
  */
 
 function searchBST(root: TreeNode | null, val: number): TreeNode | null {
+    
+  // Base case
+  if (root === null) {
+    return null;
+  }
+
+  // We found it
+  if (val === root.val) {
+    return root;
+  }
+
+  // We didn't find it, recurse down the
+  if (val < root.val) {
+    return searchBST(root.left, val);
+  }
+  return searchBST(root.right, val);
 
 };
