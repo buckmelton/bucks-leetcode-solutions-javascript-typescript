@@ -55,5 +55,26 @@ will eventually be 1 number, which necessarily must be the answer.
 
 
 function guessNumber(n: number): number {
+  let lowVal: number = 1;
+  let highVal: number = n;
+  let myGuess: number = n;
+  let myGuessResult: number = undefined;
 
+  if (guess(n) === 0) { return n }
+
+  while (lowVal <= highVal) {
+    myGuess = (Math.floor((highVal - lowVal) / 2)) + lowVal;
+    myGuessResult = guess(myGuess);
+    if (myGuessResult === 0) {
+      return myGuess;
+    }
+    if (myGuessResult === -1) {
+      highVal = myGuess;
+    } else {
+      if (myGuessResult === 1) {
+        lowVal = myGuess;
+      }
+    }
+  }
+  
 };
