@@ -78,3 +78,10 @@ function guessNumber(n: number): number {
   }
   
 };
+
+
+/*
+COMPLEXITY ANALYSIS:
+SPACE: O(1).  We only need space for a few local variables tracking the range and guesses.
+TIME: O(log(2)n): This is a binary search, so the search space is halved each time.
+*/
