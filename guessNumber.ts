@@ -33,13 +33,14 @@ Constraints:
 
 /*
 BUCK'S NOTES:
-We are only given one function signature.  But we
-have to return one thing, the number that was picked.
-But we have to make multiple guesses without knowing
-the guess, meaning we need the function to return multiple
-times.  This means the function must be recursive, it must
-call itself multiple times.  Which makes sense with a binary
-search problem.
+We start by guessing the midpoint of the range between 1 (beginning of range)
+and n (end of range).
+If we get 0, we guessed correctly and are done.  If we get -1, our guess was
+lower than the answer, so we can make our guess the new beginning of range.
+If we get 1, our guess was higher than the answer, so. we can make our guess
+the new end of range.
+We keep guessing the midpoint and adjusting our range.  Worst case, the range
+will eventually be 1 number, which necessarily must be the answer.
 */
 
 
