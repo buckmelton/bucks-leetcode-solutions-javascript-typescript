@@ -31,6 +31,18 @@ Constraints:
 
 */
 
+/*
+BUCK'S NOTES:
+We are only given one function signature.  But we
+have to return one thing, the number that was picked.
+But we have to make multiple guesses without knowing
+the guess, meaning we need the function to return multiple
+times.  This means the function must be recursive, it must
+call itself multiple times.  Which makes sense with a binary
+search problem.
+*/
+
+
 /** 
  * Forward declaration of guess API.
  * @param {number} num   your guess
