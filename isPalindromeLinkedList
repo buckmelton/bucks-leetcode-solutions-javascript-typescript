@@ -30,6 +30,21 @@ The number of nodes in the list is in the range [1, 105].
  * }
  */
 
+ /* 
+ BUCK'S NOTES:
+ Since this is only a singly-linked list, we don't have access to the other
+ end of the list, which we MUST know to determine if it's a palindrome. We
+ could consider solutions where we go through and put node values on a stack
+ for future comparison with their mirror-image nodes, but the problem there
+ is that we won't know where to start the comparison, i.e. where the middle
+ of the list is.
+
+ If we already have to traverse the list anyway, I think the best approach is to
+ traverse the list and create a doubly-linked list along the way.  When we
+ reach the end, we'll have pointers to both head and tail for a doubly-
+ linked list and can then follow a traditional recursive method.
+ */
+
 function isPalindrome(head: ListNode | null): boolean {
     
 };
