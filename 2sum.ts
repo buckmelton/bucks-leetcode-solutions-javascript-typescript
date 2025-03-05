@@ -27,3 +27,10 @@ Input: [2,6,5,8,11], target = 15
 Result: [-1, -1]
 Explanation: There exist no such two numbers whose sum is equal to the target.
 */
+
+const twoSum = function(arr: number[]): number[][] {
+  console.log('ok');
+  return [];
+};
+
+twoSum([1,2]);
