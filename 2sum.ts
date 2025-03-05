@@ -28,7 +28,22 @@ Result: [-1, -1]
 Explanation: There exist no such two numbers whose sum is equal to the target.
 */
 
-const twoSum = function(arr: number[]): number[][] {
+/*
+BUCK'S NOTES:
+Use "frequency count" method with a hashtable.  Traverse the full array.
+For each arr[i], check if the complement (target - arr[i]) has an entry in the hash table.
+If it does, push onto the result a tuple of the current i and the value(s) in the hash table.
+"Values" and not "value" because the values in the array are not guaranteed to be unique,
+so there may be multiple unique pairs of indices whose values add up to the target.
+
+E.g. [1, 1, 6], target = 7, output should be [[0,2, [1,2]], so the hashmap should be
+{ 1: [0, 1], 6: [2] }
+
+Finally, add the arr[i]: i to the hashmap, or if arr[i] is already a key, add i to its array
+of values.
+*/
+
+const twoSum = function(arr: number[], target: number): number[][] {
   console.log('ok');
   return [];
 };
