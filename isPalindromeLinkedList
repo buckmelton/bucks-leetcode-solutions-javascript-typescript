@@ -112,3 +112,9 @@ let isPalindrome = function(head) {
 
   return isPalindromeHelper(head, tail);    
 };
+
+/*
+COMPLEXITY ANALYSIS:
+SPACE: O(N).  We're adding a 'prev' field to each of the nodes, plus we're placing N/2 recursive calls on the stack.
+TIME: O(N).  We're traversing all N linked list nodes once to create doubly-linked list, and we're making N/2 recursive calls.
+*/
