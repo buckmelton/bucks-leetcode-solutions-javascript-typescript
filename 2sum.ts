@@ -58,6 +58,9 @@ PSEUDOCODE:
 */
 
 const twoSum = function(arr: number[], target: number): number[][] {
+  let complementIndices: { [comp: number]: number[] } = {};
+  let result: number[][] = [];
+
   console.log('ok');
   return [];
 };
