@@ -68,6 +68,47 @@ The number of nodes in the list is in the range [1, 105].
    - Recursive case: return head.val === tail.val && isPalindromeHelper(head.next, tail.next)
 */
 
-function isPalindrome(head: ListNode | null): boolean {
-    
+let isPalindrome = function(head) {
+
+  const printList = function(head) {
+    console.log(`**********`);
+    while (head !== null) {
+      console.log(`head.val: ${head.val}, head.prev: ${head.prev}, head.next: ${head.next}`);
+      head = head.next;
+    }
+    console.log(`**********`);
+  }
+
+  const printListBackwards = function(tail) {
+    console.log(`**********`);
+    while (tail !== null) {
+      console.log(`tail.val: ${tail.val}, tail.next: ${tail.next}, tail.prev: ${tail.prev}`);
+      tail = tail.prev;
+    }
+    console.log(`**********`);
+  }
+
+  // traverse list and create doubly-linked list
+  let curNode = head;
+  if (curNode != null) {
+    curNode.prev = null;
+  }
+  let prevNode = undefined;
+  while (curNode.next != null) {
+    prevNode = curNode;
+    curNode = curNode.next;
+    curNode.prev = prevNode;
+  }
+  let tail = curNode;
+
+  // ASSERT: we now have a doubly-linked list with head and tail
+  // printListBackwards(tail);
+ 
+  function isPalindromeHelper(head, tail) {
+    if (head === null) { return true; }
+    if (head === tail) { return true; }
+    return ((head.val === tail.val) && isPalindromeHelper(head.next, tail.prev));
+  }
+
+  return isPalindromeHelper(head, tail);    
 };
