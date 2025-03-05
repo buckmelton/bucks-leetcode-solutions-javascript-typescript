@@ -43,6 +43,20 @@ Finally, add the arr[i]: i to the hashmap, or if arr[i] is already a key, add i 
 of values.
 */
 
+/*
+PSEUDOCODE:
+- Initialize empty hashmap
+- Initialize empty result array
+- For each element arr[i] in input array
+	- if (target - arr[i]) exists as a key in hashmap
+		- for each element val[j] for key
+			- push tuple [arr[i], val[j]] onto result array
+	- if arr[i] exists as key in hashmap
+		- add i to the key's value array
+	- else add { arr[i]: i } to hashmap
+- Return result
+*/
+
 const twoSum = function(arr: number[], target: number): number[][] {
   console.log('ok');
   return [];
