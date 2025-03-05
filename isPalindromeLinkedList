@@ -42,8 +42,31 @@ The number of nodes in the list is in the range [1, 105].
  If we already have to traverse the list anyway, I think the best approach is to
  traverse the list and create a doubly-linked list along the way.  When we
  reach the end, we'll have pointers to both head and tail for a doubly-
- linked list and can then follow a traditional recursive method.
+ linked list and can then follow a traditional recursive (or iterative!) method.
+
+ One tricky part is determining if the head and tail have crossed each other.
+ If we have an odd number of nodes, then at some point head === tail, so that's
+ easy.  If we have an even number, we can't know if head and tail have passed
+ each other without extra processing or saving off some way to track where head
+ and tail are relative to each other.
+
+ Depending on how much we want to alter the given data structure, we could add
+ a "visited" attribute to the node, or an actual index to the node, in which 
+ case I'm almost tempted, in the first traversal, to just convert the whole thing
+ to an array on which we can perform the recursive palindrome testing.  But that
+ seems to violate the spirit of the problem?
+
  */
+
+ /*
+ PSEUDOCODE:
+ - Traverse linked list, create doubly-linked list along the way.
+ - Starting with head and tail and advancing simultaneously from each
+   end, follow canonical recursive method of determining palindrome:
+   - Base case 1: head === null (ASSERT tail === null), return true (either empty list, or reached the middle of a list with even number of nodes)
+   - Base case 2: head === tail (the objects themselves, not the values), return true (we've reached the middle of a list with an odd number of nodes)
+   - Recursive case: return head.val === tail.val && isPalindromeHelper(head.next, tail.next)
+*/
 
 function isPalindrome(head: ListNode | null): boolean {
     
