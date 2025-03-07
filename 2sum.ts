@@ -58,11 +58,35 @@ PSEUDOCODE:
 */
 
 const twoSum = function(arr: number[], target: number): number[][] {
-  let complementIndices: { [comp: number]: number[] } = {};
+const twoSum = function(arr: number[], target: number): number[][] {
+  let complementIndicesMap: Map<number, number[]> = new Map();
   let result: number[][] = [];
+  for (let i=0; i<arr.length; i++) {
 
-  console.log('ok');
-  return [];
+    let compInds = complementIndicesMap.get(target - arr[i]);
+    if (compInds != undefined) {
+      for (let compInd of compInds) {
+        if (compInd !== i) {
+          result.push([compInd, i]);
+        }
+      }
+    }
+
+    if (complementIndicesMap.has(arr[i])) {
+      let compInds2 = complementIndicesMap.get(arr[i]);
+      compInds2.push(i);
+      complementIndicesMap.set(arr[i], compInds2);
+    } else {
+      complementIndicesMap.set(arr[i], [i]);
+    }
+
+  }
+
+  return result;
 };
 
-twoSum([1,2]);
+console.log(twoSum([1,2],3));
+console.log(twoSum([1, 5, 7, -1, 5], 6));
+console.log(twoSum([3, 5, 2, -4, 8, 11], 7));
+console.log(twoSum([2,6,5,8,11], 14));
+console.log(twoSum([2,6,5,8,11], 15));
