@@ -90,3 +90,11 @@ console.log(twoSum([1, 5, 7, -1, 5], 6));
 console.log(twoSum([3, 5, 2, -4, 8, 11], 7));
 console.log(twoSum([2,6,5,8,11], 14));
 console.log(twoSum([2,6,5,8,11], 15));
+
+/*
+COMPLEXITY ANALYSIS:
+SPACE: O(N).  O(N) for the hashmap, which has one entry for each of the N values in the input array +
+  <O(N) entries in the results table.
+TIME: O(N).  O(N) for traversing the N entries + <O(N) for pushing to the results array.
+*/
+
