@@ -32,3 +32,26 @@ Constraints:
 0 <= n <= 105
 
 */
+
+/*
+BUCK'S NOTES:
+Naive approach:
+- Loop through all integers 0 to n
+  - Use Brian Kernighan's Algorithm to determine number of set bits
+  - Push that result onto the results array
+
+*/
+
+var countBits = function(n) {
+  let ans = [];
+  for (let i = 0; i <= n; i++) {
+    let curNum = i;
+    let setBitCount = 0;
+    while ( curNum !== 0 ) {
+      setBitCount++;
+      curNum &= ( curNum - 1 );
+    }
+    ans.push(setBitCount);
+  }
+  return ans;
+};
