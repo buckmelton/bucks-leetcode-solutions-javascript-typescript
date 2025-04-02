@@ -101,3 +101,16 @@ function maxHeapExtract(maxHeap: number[]): number {
   bubbleDown(maxHeap);
   return maxVal;
 }
+
+function findKthLargest(nums: number[], k: number): number {
+  let maxHeap: number[] = [];
+  for (const num of nums) {
+    maxHeapInsert(maxHeap, num);
+  }
+
+  let maxElement: number = null;
+  for (let i = 1; i <= k; i++) {
+    maxElement = maxHeapExtract(maxHeap);
+  }
+  return maxElement;
+};
