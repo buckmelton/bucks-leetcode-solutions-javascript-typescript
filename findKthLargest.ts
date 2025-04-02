@@ -20,3 +20,32 @@ Constraints:
 -10**4 <= nums[i] <= 10**4
 
 */
+
+/*
+
+BUCK'S NOTES/OBSERVATIONS:
+We've been told this is a heap problem.
+Traverse the array, and create a max heap.
+Once you have the complete max heap, your
+kth extraction will be the answer.
+
+PSEUDOCODE:
+- Initialize max heap as array
+- For each element in the array
+  - Insert the element in the max heap
+- Perform k extractions
+- Return the kth extraction.
+
+PSEUDOCODE FOR INSERT:
+- Push value onto end of heap
+- While value is greater than parent
+  - Swap value and parent
+
+PSEUDOCODE FOR EXTRACT:
+- Save value at root
+- Move last value in array to root
+- Make root curValue
+- While curValue < curValue child1 or curValue < curVaue child2
+  - swap
+  
+*/
