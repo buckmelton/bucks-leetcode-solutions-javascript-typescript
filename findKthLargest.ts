@@ -113,4 +113,23 @@ function findKthLargest(nums: number[], k: number): number {
     maxElement = maxHeapExtract(maxHeap);
   }
   return maxElement;
-};
+}
+
+/* 
+
+COMPLEXITY ANALYSIS:
+SPACE:
+O(N) for storing heap
+plus
+O(1) for misc tracking variables
+=
+O(N)
+
+TIME:
+O(N) + O(log N) = O(N) for creating heap
+plus
+K * O(log N) for popping heap K times
+=
+O(N log N)
+
+*/
