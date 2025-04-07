@@ -45,3 +45,68 @@ PSEUDOCODE FOR EXTRACT:
 - While curValue < curValue child1 or curValue < curVaue child2
   - swap
 */
+
+function swap(arr: number[], i: number, j: number) {
+  let temp: number = undefined;
+  temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+function maxHeapInsert(maxHeap: number[], num: number): void {
+  maxHeap.push(num);
+  let curPos: number = maxHeap.length - 1;
+
+  while ( ( curPos > 0 ) && ( maxHeap[curPos] > maxHeap[Math.floor((curPos-1)/2)] ) ) {
+    swap(maxHeap, curPos, Math.floor((curPos-1)/2));
+    curPos = Math.floor((curPos-1)/2);
+  }
+}
+
+function bubbleDown(maxHeap): void {
+  let curPos: number = 0;
+  let leftChildPos: number = curPos * 2 + 1;
+  let rightChildPos: number = curPos * 2 + 2;
+  let leftChildExists: boolean = leftChildPos < maxHeap.length;
+  let rightChildExists: boolean = rightChildPos < maxHeap.length;
+  let finished = false;
+  while (!finished) {
+    if ( leftChildExists && rightChildExists &&
+      ( ( ( maxHeap[curPos] < maxHeap[leftChildPos] ) || ( maxHeap[curPos] < maxHeap[rightChildPos] ) ) ) ) {
+      let swapPos: number = maxHeap[leftChildPos] > maxHeap[rightChildPos] ? leftChildPos : rightChildPos;
+      swap( maxHeap, curPos, swapPos );
+      curPos = swapPos;
+    } else {
+      if ( leftChildExists && ( maxHeap[curPos] < maxHeap[leftChildPos] ) ) {
+        swap( maxHeap, curPos, leftChildPos );
+        curPos = leftChildPos;
+      } else {
+        finished = true;
+      }
+    }
+    leftChildPos = curPos * 2 + 1;
+    rightChildPos = curPos * 2 + 2;
+    leftChildExists = leftChildPos < maxHeap.length;
+    rightChildExists = rightChildPos < maxHeap.length;
+  }
+} 
+
+function maxHeapExtract(maxHeap: number[]): number {
+  let maxVal: number = maxHeap[0];
+  maxHeap[0] = maxHeap.pop();
+  bubbleDown(maxHeap);
+  return maxVal;
+}
+
+function findKthLargest(nums: number[], k: number): number {
+  let maxHeap: number[] = [];
+  for (const num of nums) {
+    maxHeapInsert(maxHeap, num);
+  }
+
+  let maxElement: number = null;
+  for (let i = 1; i <= k; i++) {
+    maxElement = maxHeapExtract(maxHeap);
+  }
+  return maxElement;
+};
