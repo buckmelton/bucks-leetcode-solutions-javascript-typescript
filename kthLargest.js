@@ -110,3 +110,23 @@ var findKthLargest = function(nums, k) {
 
   return minHeap[0];    
 };
+
+
+/* 
+
+COMPLEXITY ANALYSIS:
+SPACE:
+O(K) for storing heap
+plus
+O(1) for misc tracking variables
+=
+O(K)
+
+TIME:
+O(N * log K) for creating heap
+plus
+O(N-K) for popping heap N-K times
+=
+O(N log K)
+
+*/
