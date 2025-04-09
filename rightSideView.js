@@ -63,3 +63,45 @@ const treeifyArray = (arr) => {
   }
   return root;
 }
+
+var rightSideView = function(root) {
+  // I couldn't get the leetcode implicit internal conversion from root = array to root = TreeNode to work,
+  // so I have to hardcode the input here, exactly how leetcode encodes a tree as a BFS array.
+  let newRoot = [1,2,3,null,5,null,4];
+  newRoot = treeifyArray(newRoot);
+
+  if ( newRoot === null ) {
+    return [];
+  }
+
+  let rightSideVals = [];
+  let bfsQ = [];
+
+  bfsQ.push(newRoot);
+  bfsQ.push(null);
+
+  let curNode = newRoot;
+  while (bfsQ.length > 0) {
+    let prevNode = curNode;
+    curNode = bfsQ.shift();
+    while (curNode !== null) { // null indicating end of current level
+      if (curNode.left !== null) {
+        bfsQ.push(curNode.left);
+      }
+      if (curNode.right !== null) {
+        bfsQ.push(curNode.right);
+      }
+      prevNode = curNode;
+      curNode = bfsQ.shift();
+    }
+    // curNode is null, meaning we reached the sentinel telling us it's the
+    // end of a level, and prevNode will hold a right hand view value.
+    rightSideVals.push(prevNode.val);
+
+    // add new sentinel to end of queue to mark end of next level
+    if (bfsQ !== null && bfsQ.length > 0) {
+      bfsQ.push(null);
+    }
+  }
+  return rightSideVals;
+};
