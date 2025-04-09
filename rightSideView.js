@@ -27,3 +27,39 @@ Constraints:
 The number of nodes in the tree is in the range [0, 100].
 -100 <= Node.val <= 100
 */
+
+// I couldn't get the leetcode implicit internal conversion from root = array to root = TreeNode to work,
+// so I created my own MyNode class and wrote a conversion function 'treeifyArray' to convert array into tree.
+
+class MyNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+const treeifyArray = (arr) => {
+  if (arr.length == 0) {
+    return null;
+  }
+  let root = new MyNode(arr[0]);
+  let parentStack = [];
+  let curParent = root;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (i % 2 == 1) {
+      if (arr[i] != null) {
+        curParent.left = new MyNode(arr[i]);
+        parentStack.push(curParent.left);
+      }
+    } else {
+      if (arr[i] != null) {
+        curParent.right = new MyNode(arr[i]);
+        parentStack.push(curParent.right);
+      }
+      curParent = parentStack.shift();
+    }
+  }
+  return root;
+}
