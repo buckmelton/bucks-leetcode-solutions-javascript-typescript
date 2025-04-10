@@ -22,3 +22,21 @@ Constraints:
 The number of nodes in the tree is in the range [1, 10**4].
 -10**5 <= Node.val <= 10**5
 */
+
+/*
+BUCK'S NOTES & OBSERVATIONS:
+There is no way avoid doing a full traversal of the tree, we need to visit
+each node to compute the level sums.
+
+We could do a DFS and keep separate variables for each level sum which are
+added to as we encounter nodes at the various levels.
+
+But it seems more intuitive to do a BFS.  As we add nodes to the queue, when
+we reach the end of a level, we add a sentinel to the queue indicating the end
+of a level. We know it's the end of a level, and to add a sentinel to the queue - it will
+be after the rightmost child of a node popped from the queue that has a sentinel following it.
+
+As we process nodes popped off the front of the queue, we add up the values until a
+sentinel is reached in the queue.  The current sum is pushed onto to the result array of level sums,
+and the current sum is set back to zero to start summing the next level.
+*/ 
