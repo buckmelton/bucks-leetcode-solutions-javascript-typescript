@@ -40,3 +40,36 @@ As we process nodes popped off the front of the queue, we add up the values unti
 sentinel is reached in the queue.  The current sum is pushed onto to the result array of level sums,
 and the current sum is set back to zero to start summing the next level.
 */ 
+
+var maxLevelSum = function(root) {
+  let maxLevelSum = { level: 1, sum: Number.MIN_SAFE_INTEGER }
+  let curLevel = 1;
+  let curLevelSum = 0;
+
+  let bfsQ = [];
+  bfsQ.push(root);
+  bfsQ.push(null);
+
+  while (bfsQ.length > 0 && bfsQ[0] != null) {
+    curNode = bfsQ.shift();
+    curLevelSum += curNode.val;
+    if (curNode.left != null) {
+      bfsQ.push(curNode.left);
+    }
+    if (curNode.right != null) {
+      bfsQ.push(curNode.right);
+    }
+    if (bfsQ[0] === null) {  // We've reached the end of the level
+      if (curLevelSum > maxLevelSum.sum) {
+        maxLevelSum.level = curLevel;
+        maxLevelSum.sum = curLevelSum;
+      }
+      let toss = bfsQ.shift();
+      curLevelSum = 0;
+      curLevel++;
+      bfsQ.push(null);
+    }
+  }
+
+  return maxLevelSum.level;
+};
