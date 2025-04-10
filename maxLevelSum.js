@@ -73,3 +73,16 @@ var maxLevelSum = function(root) {
 
   return maxLevelSum.level;
 };
+
+/*
+COMPLEXITY ANALYSIS
+SPACE: We have an additional queue that will never contain more than 2 levels of nodes (since we
+are popping the nodes as we are processing them, no grandchild nodes can possibly enter the queue
+until all the grandparent nodes have been popped and the parent nodes are being processed), the
+widest level has worst case log N nodes, so the queue is worst case log N + 1/2 log N, O(log N).
+We have auxiliary variables to track the level, level sums, and max level sum, all constant size O(1).
+SPACE COMPLEXITY: O(log N)
+
+TIME: We just need to make one pass through all N nodes.
+TIME COMPLEXITY: O(N)
+*/
