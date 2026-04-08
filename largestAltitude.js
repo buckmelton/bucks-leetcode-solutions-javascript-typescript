@@ -17,3 +17,19 @@
 // n == gain.length
 // 1 <= n <= 100
 // -100 <= gain[i] <= 100
+
+// Idea:
+// Keep running track of altitude.
+// Whenever we reach a new highest altitude, replace previous highest altitude 
+
+var largestAltitude = function(gain) {
+  let curAlt = 0;
+  let highestAlt = curAlt;
+  for (const pointGain of gain) {
+    curAlt += pointGain;
+    if (curAlt > highestAlt) {
+      highestAlt = curAlt;
+    }
+  }
+  return highestAlt;
+};
