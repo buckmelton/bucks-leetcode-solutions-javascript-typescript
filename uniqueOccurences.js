@@ -20,3 +20,28 @@
 
 // 1 <= arr.length <= 1000
 // -1000 <= arr[i] <= 1000
+
+// Pseudocode:
+// Initialize empty hash (object)
+// For each num in arr:
+//   if num is not key in hash:
+//     create element where key is num and value is 0
+//   increment value of element with key num
+// uniqueValsCount = num of hash elements
+// Create valueSet from object element values
+// Return valueSet.size == uniqueValsCount
+
+var uniqueOccurrences = function(arr) {
+  let freqs = {};
+  for (const num of arr) {
+    if (!(num in freqs)) {
+      freqs[num] = 0;
+    }
+    freqs[num] = freqs[num] + 1;
+  }
+  console.log(freqs);
+  let freqVals = Object.values(freqs);
+  let uniqueArrValCount = freqVals.length;
+  let valSet = new Set(freqVals);
+  return uniqueArrValCount == valSet.size;
+};
