@@ -28,3 +28,49 @@
 // 2 <= asteroids.length <= 10^4
 // -1000 <= asteroids[i] <= 1000
 // asteroids[i] != 0
+
+/**
+ * @param {number[]} asteroids
+ * @return {number[]}
+ */
+
+// Pseudocode:
+// Init stack for surviving asteroids
+// For each asteroid in array:
+//   Init pushToStack = true
+//   While stack not empty and asteroid at top moving right and cur asteroid moving left
+//     If top asteroid smaller:
+//       Pop and discard it
+//       Continue (in order to compare cur asteroid to next top of stack)
+//     If top ast and cur ast same size:
+//       Pop and discard top ast
+//     // If we reach here, then either top ast bigger than or same size as cur ast, so cur ast should explode
+//     Set pushToStack to false
+//   If pushToStack:
+//     Push cur ast
+//
+// // What's left on the stack now are the forever-remaining asteroids in reverse order
+// Return array that is reverse order of stack
+
+var asteroidCollision = function(asteroids) {
+  let stack = [];
+  for (const curA of asteroids) {
+    let pushToStack = true;
+    while (stack.length != 0 && stack[stack.length-1] > 0 && curA < 0) {
+      if (Math.abs(stack[stack.length-1]) < Math.abs(curA)) {
+        stack.pop();
+        continue;
+      } else {
+        if (Math.abs(stack[stack.length-1]) == Math.abs(curA)) {
+          stack.pop();
+        }
+      }
+      pushToStack = false;
+      break;
+    }
+    if (pushToStack) {
+      stack.push(curA);
+    }
+  }
+  return stack;
+};
